@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Inicio Ganime</title>
+  </head>
+  <body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <div class="form-group">
+          <p class="text-muted">Usuario Ganime</p>
+          <img src="image/prueba.png" class="img-fluid rounded-circle ms-4" width="50px" height="50px" id="ShowUserFile">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+          <ul class="navbar-nav me-auto mt-2">
+            <li class="nav-item">
+              <a class="nav-link active" href="file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/Registro%20Personaje%20Ganime.html">Registrar Personaje
+                <span class="visually-hidden">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Tus Personajes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Favoritos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cerrar Sesión</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-sm-2 mt-2" type="text" placeholder="Buscar">
+            <button class="btn btn-secondary my-2 my-sm-0 ms-3" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <center>
+      <div class="card w-75 mt-5 mb-5">
+        <h2 class="text-center">TOP MEJORES PERSONAJES</h2>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col" class="text-center">Posición</th>
+              <th scope="col" class="text-center">Personaje</th>
+              <th scope="col" class="text-center">Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr onclick="location.href='file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/Personaje%20Ganime.html'">
+              <th scope="row" class="align-middle">
+                <h4 class="text-center" style="color: gold;">1º</h4>
+              </th>
+              <td class="align-middle">
+                <center><img src="image/Link.jpg" class="img-fluid rounded-circle" width="75px" height="75px"></center>
+              </td>
+              <td class="align-middle">
+                  <h4 class="text-center">Link</h4>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle">
+                <h4 class="text-center" style="color: silver;">2º</h4>
+              </th>
+              <td class="align-middle">
+                <center><img src="image/Link.jpg" class="img-fluid rounded-circle" width="75px" height="75px"></center>
+              </td>
+              <td class="align-middle">
+                  <h4 class="text-center">Link</h4>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle">
+                <h4 class="text-center" style="color: #CD7F32;">3º</h4>
+              </th>
+              <td class="align-middle">
+                <center><img src="image/Link.jpg" class="img-fluid rounded-circle" width="75px" height="75px"></center>
+              </td>
+              <td class="align-middle">
+                  <h4 class="text-center">Link</h4>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle">
+                <h4 class="text-center">4º</h4>
+              </th>
+              <td class="align-middle">
+                <center><img src="image/Link.jpg" class="img-fluid rounded-circle" width="75px" height="75px"></center>
+              </td>
+              <td class="align-middle">
+                  <h4 class="text-center">Link</h4>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle">
+                <h4 class="text-center">5º</h4>
+              </th>
+              <td class="align-middle">
+                <center><img src="image/Link.jpg" class="img-fluid rounded-circle" width="75px" height="75px"></center>
+              </td>
+              <td class="align-middle">
+                  <h4 class="text-center">Link</h4>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </center>
+
+    <script src="js/jQuery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -13,8 +13,8 @@
   <body>
     <center>
       <!-- Imagen de Selección -->
-      <img class="img-fluid rounded-circle mt-5 mb-5" width="300px" height="300px" id="ShowUserFile">
-      <input class="form-control w-auto mb-5" type="file" id="InputUserFile">
+      <img class="img-fluid rounded-circle mt-5 mb-5" width="300px" height="300px" id="ImageRegistrarUsuario">
+      <input class="form-control w-auto mb-5" type="file" id="inputImageRegistrarUsuario">
     </center>
 
     <!-- Registro de Correo -->
@@ -45,7 +45,7 @@
         <label class="col-form-label">* Contraseña:</label>
       </div>
       <div class="col">
-        <input id="inputPasswordRegistroUsuario" class="form-control" aria-describedby="passwordHelpInline" placeholder="TeamZelda#1">
+        <input id="inputPasswordRegistroUsuario" class="form-control" placeholder="TeamZelda#1">
       </div>
       <div class="col"></div>
     </div>
@@ -63,7 +63,7 @@
 
     <center>
       <div class="form-group">
-        <button type="button" class="btn btn-secondary mb-2" id="buttonRegistrarUsuario" onclick="writeUserData('userId', 'name', 'email', 'imageUrl')">Confirmar Registro</button>
+        <button type="button" class="btn btn-secondary mb-2" id="buttonRegistrarUsuario" onclick="addUsuario()">Confirmar Registro</button>
       </div>
       <div class="form-group mb-5">
         <small id="camposObligatoriosRegistro" class="form-text text-muted">Los campos con * son obligatorios de rellenar para poder registrarse.</small>
@@ -72,7 +72,6 @@
 
     <script src="../src/jQuery.js"></script>
     <script src="../src/bootstrap.min.js"></script>
-    <script type="module" src="http://localhost:8081/firebase.js" crossorigin="anonymous"></script>
-    <script src="../src/imagenUsuario.js"></script>
+    <script src="../src/registrar.usuario.js"></script>
   </body>
 </html>

@@ -30,11 +30,14 @@ function addUsuario() {
     if(user != "" && password != "" && email != "") {
       fetch('http://localhost:5000/usuario/get/last')
       .then(response => response.json())
-      .then(data => fetch('http://localhost:5000/usuario/put/' + (data.id+1) + '/' + user + '/' + password + '/' + email + '/' + description + '/blob:null/C:/fakepath/' + image.substring(12)))
+      .then(data => {
+        sessionStorage.setItem('id', (data.id+1));
+        fetch('http://localhost:5000/usuario/put/' + (data.id+1) + '/' + user + '/' + password + '/' + email + '/' + description + '/blob:null/C:/fakepath/' + image.substring(12))
         .then(response => {
+          console.log(response);
           location.href = "file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Inicio%20Ganime.html";
-        }
-      );
+        })
+      })
     }
 
     else {

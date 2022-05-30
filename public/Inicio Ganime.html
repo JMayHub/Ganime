@@ -15,8 +15,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <div class="form-group">
-          <p class="text-muted">Usuario Ganime</p>
-          <img src="../image/prueba.png" class="img-fluid rounded-circle ms-4" width="50px" height="50px" id="ShowUserFile">
+          <p class="text-muted" id="userUsuarioInicio">Usuario Ganime</p>
+          <img src="../image/noImage.jpg" class="img-fluid rounded-circle ms-4" width="50px" height="50px" id="imageUsuarioInicio">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -58,7 +58,7 @@
               <th scope="col" class="text-center">Nombre</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="tabla">
             <tr onclick="location.href='file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Personaje%20Ganime.html'">
               <th scope="row" class="align-middle">
                 <h4 class="text-center" style="color: gold;">1º</h4>
@@ -121,5 +121,6 @@
 
     <script src="../src/jQuery.js"></script>
     <script src="../src/bootstrap.min.js"></script>
+    <script src="../src/inicio.js"></script>
   </body>
 </html>

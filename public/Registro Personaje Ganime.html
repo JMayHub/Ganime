@@ -13,8 +13,8 @@
   <body>
     <center>
       <!-- Imagen de Selección -->
-      <img class="img-fluid mt-5 mb-5" width="300px" height="300px" id="ShowUserFile">
-      <input class="form-control w-auto mb-5" type="file" id="InputUserFile">
+      <img class="img-fluid mt-5 mb-5" width="300px" height="300px" id="ImageRegistroPersonaje">
+      <input class="form-control w-auto mb-5" type="file" id="InputImageRegistroPersonaje">
     </center>
 
     <!-- Registro de Nombre -->
@@ -23,18 +23,18 @@
         <label for="inputUserLogin" class="col-form-label">* Nombre:</label>
       </div>
       <div class="col">
-        <input id="inputUserLogin" class="form-control" placeholder="Jotaro">
+        <input id="inputNombreRegistrarPersonaje" class="form-control" placeholder="Jotaro">
       </div>
       <div class="col"></div>
     </div>
 
     <!-- Registro de Apellidos -->
-    <div class="row mb-3">
+    <div class="row mb-5">
       <div class="col text-end">
-        <label for="inputUserLogin" class="col-form-label">* Apellidos:</label>
+        <label for="inputUserLogin" class="col-form-label">Apellidos:</label>
       </div>
       <div class="col">
-        <input id="inputUserLogin" class="form-control" placeholder="Joestar">
+        <input id="inputApellidoRegistrarPersonaje" class="form-control" placeholder="Joestar">
       </div>
       <div class="col"></div>
     </div>
@@ -42,10 +42,16 @@
     <!-- Registro de Juego/Anime -->
     <div class="row mb-5">
       <div class="col text-end">
-        <label for="inputPasswordLogin" class="col-form-label">* Juego/Anime:</label>
+        <label for="inputJuegoAnimeRegistrarPersonaje" class="col-form-label">Juego/Anime:</label>
       </div>
       <div class="col">
-        <input id="inputPasswordLogin" class="form-control" aria-describedby="passwordHelpInline" placeholder="Jojo's Bizarre Adventure">
+        <select class="form-select" id="inputJuegoAnimeRegistrarPersonaje">
+          <option>Anónimo</option>
+          <option>The Legend of Zelda</option>
+          <option>Clash Royale</option>
+          <option>Jojo's Bizarre Adventure</option>
+          <option>Sword Art Online</option>
+        </select>
       </div>
       <div class="col"></div>
     </div>
@@ -53,10 +59,10 @@
     <!-- Registro de Juego/Anime -->
     <div class="row mb-5">
       <div class="col text-end">
-        <label for="inputPasswordLogin" class="col-form-label">Armas/Habilidades:</label>
+        <label for="inputArmasHabilidadesRegistrarPersonaje" class="col-form-label">Armas/Habilidades:</label>
       </div>
       <div class="col">
-        <input id="inputPasswordLogin" class="form-control" aria-describedby="passwordHelpInline" placeholder="Star Platinum">
+        <input id="inputArmasHabilidadesRegistrarPersonaje" class="form-control" aria-describedby="passwordHelpInline" placeholder="Star Platinum">
       </div>
       <div class="col"></div>
     </div>
@@ -64,25 +70,25 @@
     <!-- Registro de Historia -->
     <div class="row mb-5">
       <div class="col text-end">
-        <label for="descripcionUsuarioRegistro" class="form-label mt-4">Historia:</label>
+        <label for="inputHistoriaRegistrarPersonaje" class="form-label mt-4">Historia:</label>
       </div>
       <div class="col">
-        <textarea class="form-control" id="descripcionUsuarioRegistro"></textarea>
+        <textarea class="form-control" id="inputHistoriaRegistrarPersonaje"></textarea>
       </div>
       <div class="col"></div>
     </div>
 
     <center>
       <div class="form-group">
-        <button type="button" class="btn btn-secondary mb-2">Confirmar Personaje</button>
+        <button type="button" class="btn btn-secondary mb-2" onclick="addPersonaje()">Confirmar Personaje</button>
       </div>
       <div class="form-group mb-5">
         <small id="camposObligatoriosRegistro" class="form-text text-muted">Los campos con * son obligatorios de rellenar para poder registrarse.</small>
       </div>
     </center>
 
-    <script src="../src/imagenUsuario.js"></script>
     <script src="../src/jQuery.js"></script>
     <script src="../src/bootstrap.min.js"></script>
+    <script src="../src/registrar.personaje.js"></script>
   </body>
 </html>

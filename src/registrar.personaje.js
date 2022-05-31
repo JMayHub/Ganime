@@ -28,12 +28,33 @@ function addPersonaje() {
     var historia = document.getElementById("inputHistoriaRegistrarPersonaje").value;
     var imagen = document.getElementById('InputImageRegistroPersonaje').value;
     var id_usuario = sessionStorage.getItem('id');
+    var id = 0;
+
+    fetch('http://localhost:5000/personaje/get/last')
+      .then(response => response.json())
+      .then(data => id = (data.id+1));
+
+    if (apellidos == "") {
+      apellidos = "Apellidos no disponibles";
+    }
+
+    if (historia == "") {
+      historia = "Historia no disponible";
+    }
+
+    if (armas_habilidades == "") {
+      armas_habilidades = "Armas y Habilidades no disponibles";
+    }
+
+    if (imagen == "") {
+      imagen = "123456789012noImage.jpg";
+    }
 
     if(nombre != "") {
         fetch('http://localhost:5000/juego_anime/get/' + juego_anime)
         .then(response => response.json())
         .then(data => {
-          fetch('http://localhost:5000/personaje/put/' + nombre + '/' + apellidos + '/' + armas_habilidades + '/' + historia + '/' + imagen.substring(12) + '/' + id_usuario + '/' + data.id)
+          fetch('http://localhost:5000/personaje/put/' + id + '/' + nombre + '/' + apellidos + '/' + armas_habilidades + '/' + historia + '/' + imagen.substring(12) + '/' + id_usuario + '/' + data.id)
           .then(response => {
             console.log(response);
             location.href = "file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Inicio%20Ganime.html";

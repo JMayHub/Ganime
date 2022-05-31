@@ -49,7 +49,8 @@ class Personaje(db.Model):
     usuario_id = db.Column(db.Integer)
     juego_anime_id = db.Column(db.Integer)
 
-    def __init__(self, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
+    def __init__(self, id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
+        self.id = id
         self.nombre = nombre
         self.apellidos = apellidos
         self.armas_habilidades = armas_habilidades
@@ -125,9 +126,14 @@ def getPersonajeById(id):
     personaje = Personaje.query.get_or_404(id)
     return personaje.toJSON()
 
-@app.route('/personaje/put/<nombre>/<string:apellidos>/<string:armas_habilidades>/<string:historia>/<string:imagen>/<usuario_id>/<juego_anime_id>', methods=['GET'])
-def putPersonaje(nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
-    personaje = Personaje(nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id)
+@app.route('/personaje/get/last', methods=['GET'])
+def getLastPersonaje():
+    personaje = Personaje.query.order_by(Personaje.id.desc()).first()
+    return personaje.toJSON()
+
+@app.route('/personaje/put/<int:id>/<string:nombre>/<string:apellidos>/<string:armas_habilidades>/<string:historia>/<string:imagen>/<usuario_id>/<juego_anime_id>', methods=['GET'])
+def putPersonaje(id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
+    personaje = Personaje(id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id)
     db.session.add(personaje)
     db.session.commit()
     return personaje.toJSON()

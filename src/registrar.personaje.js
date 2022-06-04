@@ -35,7 +35,7 @@ function addPersonaje() {
       .then(data => id = (data.id+1));
 
     if (apellidos == "") {
-      apellidos = "Apellidos no disponibles";
+      apellidos = " ";
     }
 
     if (historia == "") {

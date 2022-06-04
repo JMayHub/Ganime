@@ -2,16 +2,18 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 
+#Configuración del programa.
 app = Flask(__name__)
-app.url_map.strict_slashes = False #Añadiendo esto, no es necesaria la barra del final en la URL
+app.url_map.strict_slashes = False
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'mysql://root@localhost/ganime'
 app.config ['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
+#Sincronizar BD con el programa.
 db = SQLAlchemy(app)
 
 class Usuario(db.Model):
-    #Solo hay que indicar el nombre de la columna si se llama distinto del nombre del atributo
+    #Solo hay que indicar el nombre de la columna si se llama distinto del nombre del atributo.
     id = db.Column(db.Integer, primary_key = True)
     user = db.Column(db.String(20))
     password = db.Column(db.String(20))
@@ -83,6 +85,28 @@ class Juego_anime(db.Model):
     def asdict(self):
         return {"id": self.id,
                 "nombre" : self.nombre}
+
+    def toJSON(self):
+        return jsonify(self.asdict())
+
+class Voto(db.Model):
+    #Solo hay que indicar el nombre de la columna si se llama distinto del nombre del atributo
+    id = db.Column(db.Integer, primary_key = True)
+    estado = db.Column('estado', db.Integer)
+    usuario_id = db.Column('usuario_id', db.Integer)
+    personje_id = db.Column('personaje_id', db.Integer)
+
+    def __init__(self, id, estado, usuario_id, personaje_id):
+        self.id = id
+        self.estado = estado
+        self.usuario_id = usuario_id
+        self.personje_id = personaje_id
+
+    def asdict(self):
+        return {"id": self.id,
+                "estado" : self.estado,
+                "usuario_id": self.usuario_id,
+                "personaje_id": self.personje_id}
 
     def toJSON(self):
         return jsonify(self.asdict())
@@ -178,6 +202,47 @@ def deleteJuego_animeById(id):
 def allJuegos_animes():
     juegos_animes = Juego_anime.query.all()
     return jsonify(allJuegos_animes=[juego_anime.asdict() for juego_anime in juegos_animes])
+
+@app.route('/voto/get/<int:id>', methods=['GET'])
+def getVotoById(id):
+    voto = Voto.query.get_or_404(id)
+    return voto.toJSON()
+
+@app.route('/voto/get/last', methods=['GET'])
+def getLastVoto():
+    voto = Voto.query.order_by(Voto.id.desc()).first()
+    return voto.toJSON()
+
+@app.route('/voto/get/personaje/<int:personaje_id>', methods=['GET'])
+def getVotoByPersonaje(personaje_id):
+    votos = Voto.query.filter_by(personje_id=personaje_id).all()
+    return jsonify(allVotos=[voto.asdict() for voto in votos])
+
+@app.route('/voto/post/<int:id>/<int:estado>', methods=['GET'])
+def postVotoById(id, estado):
+    voto = Voto.query.get_or_404(id)
+    voto.estado = estado
+    db.session.commit()
+    return voto.toJSON()
+
+@app.route('/voto/put/<int:id>/<int:estado>/<int:usuario_id>/<int:personaje_id>', methods=['GET'])
+def putVoto(id, estado, usuario_id, personaje_id):
+    voto = Voto(id, estado, usuario_id, personaje_id)
+    db.session.add(voto)
+    db.session.commit()
+    return voto.toJSON()
+
+@app.route('/voto/delete/<int:id>', methods=['GET'])
+def deleteVotoById(id):
+    voto = Voto.query.get(id)
+    db.session.delete(voto)
+    db.session.commit()
+    return voto.toJSON()
+
+@app.route('/voto/all', methods=['GET'])
+def allVotos():
+    votos = Voto.query.all()
+    return jsonify(allVotos=[voto.asdict() for voto in votos])
 
 if __name__ == '__main__':
     app.run( debug = True )

@@ -12,16 +12,21 @@
   </head>
   <body>
     <center>
-      <div class="card mt-5 mb-5 w-75">
+      <div class="card mt-5 mb-5" style="width: 500px;">
         <!-- Imagen -->
-        <center><img class="card-img-top mb-3" src="../image/Link.jpg" id="ImagePersonaje"></center>
+        <center><img class="card-img mb-3" src="../image/Link.jpg" id="ImagePersonaje"></center>
           <!-- Botón Like -->
-          <div class="text-end">
-            <button type="button" class="btn btn-secondary btn-lg me-4">Like</button>
+          <div class="row ms-2">
+            <div class="col-auto">
+              <img id="like" src="../image/noLike.png" width="50px" height="50px" onclick="votar()">
+            </div>
+            <div class="col-auto d-flex align-items-center">
+              <h4 id="votos">0</h4>
+            </div>
           </div>
-
+          
           <!-- Personaje -->
-          <div class="row text-start mt-5 ms-3">
+          <div class="row text-start mt-4 ms-3">
             <div class="col-auto text-end">
               <h4 class="text-muted">Personaje:</h4>
             </div>

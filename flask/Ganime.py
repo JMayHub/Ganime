@@ -48,16 +48,18 @@ class Personaje(db.Model):
     armas_habilidades = db.Column(db.String(500))
     historia = db.Column(db.String(1000))
     imagen = db.Column(db.String(100))
+    votos = db.Column(db.Integer)
     usuario_id = db.Column(db.Integer)
     juego_anime_id = db.Column(db.Integer)
 
-    def __init__(self, id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
+    def __init__(self, id, nombre, apellidos, armas_habilidades, historia, imagen, votos, usuario_id, juego_anime_id):
         self.id = id
         self.nombre = nombre
         self.apellidos = apellidos
         self.armas_habilidades = armas_habilidades
         self.historia = historia
         self.imagen = imagen
+        self.votos = votos
         self.usuario_id = usuario_id
         self.juego_anime_id = juego_anime_id
 
@@ -68,6 +70,7 @@ class Personaje(db.Model):
                 "armas_habilidades" : self.armas_habilidades,
                 "historia" : self.historia,
                 "imagen" : self.imagen,
+                "votos" : self.votos,
                 "usuario_id" : self.usuario_id,
                 "juego_anime_id" : self.juego_anime_id}
 
@@ -155,10 +158,17 @@ def getLastPersonaje():
     personaje = Personaje.query.order_by(Personaje.id.desc()).first()
     return personaje.toJSON()
 
-@app.route('/personaje/put/<int:id>/<string:nombre>/<string:apellidos>/<string:armas_habilidades>/<string:historia>/<string:imagen>/<usuario_id>/<juego_anime_id>', methods=['GET'])
-def putPersonaje(id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id):
-    personaje = Personaje(id, nombre, apellidos, armas_habilidades, historia, imagen, usuario_id, juego_anime_id)
+@app.route('/personaje/put/<int:id>/<string:nombre>/<string:apellidos>/<string:armas_habilidades>/<string:historia>/<string:imagen>/<int:votos>/<usuario_id>/<juego_anime_id>', methods=['GET'])
+def putPersonaje(id, nombre, apellidos, armas_habilidades, historia, imagen, votos, usuario_id, juego_anime_id):
+    personaje = Personaje(id, nombre, apellidos, armas_habilidades, historia, imagen, votos, usuario_id, juego_anime_id)
     db.session.add(personaje)
+    db.session.commit()
+    return personaje.toJSON()
+
+@app.route('/personaje/post/<int:id>/<int:votos>', methods=['GET'])
+def postPersonajeById(id, votos):
+    personaje = Personaje.query.get_or_404(id)
+    personaje.votos = votos
     db.session.commit()
     return personaje.toJSON()
 
@@ -171,7 +181,7 @@ def deletePersonajeById(id):
 
 @app.route('/personaje/all', methods=['GET'])
 def allPersonajes():
-    personajes = Personaje.query.all()
+    personajes = Personaje.query.order_by(Personaje.votos.desc()).all()
     return jsonify(allPersonajes=[personaje.asdict() for personaje in personajes])
 
 @app.route('/juego_anime/get/<int:id>', methods=['GET'])
@@ -206,6 +216,11 @@ def allJuegos_animes():
 @app.route('/voto/get/<int:id>', methods=['GET'])
 def getVotoById(id):
     voto = Voto.query.get_or_404(id)
+    return voto.toJSON()
+
+@app.route('/voto/get/<int:personaje_id>/<int:usuario_id>', methods=['GET'])
+def getVotoByPersonajeUsuario(personaje_id, usuario_id):
+    voto = Voto.query.filter_by(personje_id=personaje_id, usuario_id=usuario_id).first_or_404()
     return voto.toJSON()
 
 @app.route('/voto/get/last', methods=['GET'])

@@ -54,7 +54,7 @@ function addPersonaje() {
         fetch('http://localhost:5000/juego_anime/get/' + juego_anime)
         .then(response => response.json())
         .then(data => {
-          fetch('http://localhost:5000/personaje/put/' + id + '/' + nombre + '/' + apellidos + '/' + armas_habilidades + '/' + historia + '/' + imagen.substring(12) + '/' + id_usuario + '/' + data.id)
+          fetch('http://localhost:5000/personaje/put/' + id + '/' + nombre + '/' + apellidos + '/' + armas_habilidades + '/' + historia + '/' + imagen.substring(12) + '/' + 0 +  '/' + id_usuario + '/' + data.id)
           .then(response => {
             console.log(response);
             location.href = "file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Inicio%20Ganime.html";

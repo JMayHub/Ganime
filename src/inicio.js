@@ -1,7 +1,8 @@
-var id = sessionStorage.getItem('id');
-var src = "";
-var posicion = 0;
+var id = sessionStorage.getItem('id'); //Id del usuario logado.
+var src = ""; //html del ranking que se irá creando más adelante.
+var posicion = 0; //posición de cada personaje en el ranking.
 
+//Conexión a la API para extraer la información del usuario logado con el Id.
 fetch('http://localhost:5000/usuario/get/' + id)
 .then(response => response.json())
 .then(data => {
@@ -9,6 +10,7 @@ fetch('http://localhost:5000/usuario/get/' + id)
     document.getElementById('imageUsuarioInicio').src = 'C:\\Users\\joanm\\Documents\\CFGS 2º Curso (DAM)\\Proyecto Final (Ganime)\\Ganime\\image\\' + data.image;
 });
 
+//Conexión a la API para obtener todos los personajes ordenados por votos y generar el ranking.
 fetch('http://localhost:5000/personaje/all')
 .then(response => response.json())
 .then(data => {

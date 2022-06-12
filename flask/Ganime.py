@@ -264,5 +264,10 @@ def allVotos():
     votos = Voto.query.all()
     return jsonify(allVotos=[voto.asdict() for voto in votos])
 
+@app.route('/voto/all/<int:usuario_id>', methods=['GET'])
+def allVotosByUsuario(usuario_id):
+    votos = Voto.query.filter_by(usuario_id=usuario_id).all()
+    return jsonify(allVotos=[voto.asdict() for voto in votos])
+
 if __name__ == '__main__':
     app.run( debug = True )

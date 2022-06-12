@@ -184,6 +184,11 @@ def allPersonajes():
     personajes = Personaje.query.order_by(Personaje.votos.desc()).all()
     return jsonify(allPersonajes=[personaje.asdict() for personaje in personajes])
 
+@app.route('/personaje/all/<int:usuario_id>', methods=['GET'])
+def allPersonajesByUsuario(usuario_id):
+    personajes = Personaje.query.order_by(Personaje.votos.desc()).filter_by(usuario_id=usuario_id).all()
+    return jsonify(allPersonajes=[personaje.asdict() for personaje in personajes])
+
 @app.route('/juego_anime/get/<int:id>', methods=['GET'])
 def getJuego_animeById(id):
     juego_anime = Juego_anime.query.get_or_404(id)

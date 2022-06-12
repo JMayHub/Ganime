@@ -12,7 +12,7 @@
   </head>
   <body>
     <!-- Barra de Navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
       <div class="container-fluid">
         <div class="form-group">
           <p class="text-muted" id="userUsuarioInicio">Usuario Ganime</p>
@@ -35,7 +35,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Tus%20Personajes.html">Tus Personajes</a>
+              <a class="nav-link active" href="file:///C:/Users/joanm/Documents/CFGS%202%C2%BA%20Curso%20(DAM)/Proyecto%20Final%20(Ganime)/Ganime/public/Tus%20Personajes.html">Tus Personajes</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Favoritos</a>
@@ -52,26 +52,10 @@
       </div>
     </nav>
 
-    <!-- Ranking Mejores Personajes -->
-    <center>
-      <div class="card w-75 mt-5 mb-5">
-        <h2 class="text-center">TOP MEJORES PERSONAJES</h2>
-        <table class="table table-dark table-striped">
-          <thead>
-            <tr>
-              <th scope="col" class="text-center">Posición</th>
-              <th scope="col" class="text-center">Personaje</th>
-              <th scope="col" class="text-center">Nombre</th>
-            </tr>
-          </thead>
-          <tbody id="tabla">
-          </tbody>
-        </table>
-      </div>
-    </center>
+    <div class="row" id="boxPersonajes"></div>
 
     <script src="../src/jQuery.js"></script>
     <script src="../src/bootstrap.min.js"></script>
-    <script src="../src/inicio.js"></script>
+    <script src="../src/inicio.tusPersonajes.js"></script>
   </body>
 </html>
